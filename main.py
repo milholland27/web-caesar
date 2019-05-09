@@ -47,14 +47,14 @@ def index():
 def encrypt():
                                                         #TODO get rotation
     rotate = request.form['rot']
-        
+    rotate_int = int(rotate)
                                                         #TODO get text
     text = request.form['text']
                                     #TODO rotate text call function rotate_string
-    rotate_string(rotate, text)                   
-                                                        #string...return a string 
+    encrypted = rotate_string(text, rotate_int)                   
+                                                       #string...return a string 
                                     #TODO return output from rotate_string
-    return form.format('hello')  #should be the encrypted string
+    return form.format(encrypted)  #should be the encrypted string
 
 app.run()
 
