@@ -8,19 +8,18 @@ form = """<!DOCTYPE html>
 <html>
     <head>
         <style>
-            form {
-                background-color: #eee;
+            form
+            {{background-color:#eee;
                 padding: 20px;
                 margin: 0 auto;
                 width: 540px;
                 font: 16px sans-serif;
-                border-radius: 10px;
-            }
-            textarea {
+                border-radius: 10px;}}
+            textarea {{
                 margin: 10px 0;
                 width: 540px;
                 height: 120px;
-            }
+            }}
         </style>
     </head>
     <body>
@@ -32,21 +31,30 @@ form = """<!DOCTYPE html>
                 <p class = "error"></p>
             </div>
             <textarea type = "text" name = "text">
+            {0}
             </textarea>
             <br>
             <input type = "Submit">
         </form>
     </body>
-</html>"""   
+</html>"""
 
-@app.route("/")
+@app.route('/')
 def index():
-    return form
+    return form.format('')
 
-@app.route methods = POST ("/")
+@app.route('/', methods=["POST"]) 
 def encrypt():
-
-
+                                                        #TODO get rotation
+    rotate = request.form['rot']
+        
+                                                        #TODO get text
+    text = request.form['text']
+                                    #TODO rotate text call function rotate_string
+    rotate_string(rotate, text)                   
+                                                        #string...return a string 
+                                    #TODO return output from rotate_string
+    return form.format('hello')  #should be the encrypted string
 
 app.run()
 
